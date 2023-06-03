@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
-require('./app/models/inventory.model');
+require('./app/models/inventory.model.js');
 
 //Configuring th DataBase
 require('dotenv').config();
@@ -22,11 +22,11 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
 });
 
-require('./app/routes/inventory.router')(app);
+require('./app/routes/inventory.router.js')(app);
 //Create a Server
-const server = app.listen(8080, function() {
+const server = app.listen(8080, function () {
     const host = server.address().address
     const port = server.address().port
 
-    console.log("App listening at http://%s:%s", host,port)
+    console.log("App listening at http://%s:%s", host, port)
 })
